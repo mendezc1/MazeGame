@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scene1MG.unity
+- path: Assets/MazeGenerator.unity
   isLoaded: 1
   isActive: 1
