@@ -29,7 +29,7 @@ public class MazeGenerator : MonoBehaviour
             }
             _currentTile = value;
         }
-    }
+   } 
     private static MazeGenerator instance;
     public static MazeGenerator Instance
     {
@@ -65,15 +65,16 @@ public class MazeGenerator : MonoBehaviour
                 {
                     MazeString = MazeString + "X";  // added to create String
                     ptype = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    ptype.transform.position = new Vector3(i * ptype.transform.localScale.x, 0, j * ptype.transform.localScale.z);
-
+                    
+                    ptype.transform.position = new Vector3(i * ptype.transform.localScale.x, 1, j * ptype.transform.localScale.z);
+                    ptype.transform.localScale = new Vector3(1, 5, 1);
                     if (brick != null) { ptype.GetComponent<Renderer>().material = brick; }
                     ptype.transform.parent = transform;
                 }
                 else if (Maze[i, j] == 0)
                 {
                     MazeString = MazeString + "0"; // added to create String
-                    pathMazes.Add(new Vector3(i, 0, j));
+                    pathMazes.Add(new Vector3(i, 2, j));
                 }
             }
             MazeString = MazeString + "\n";  // added to create String
