@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{899D54F3-7FC1-0C13-CC33-7753E765F90D}") = "MazeGame", "Assembly-CSharp-firstpass.csproj", "{4523C63B-A14D-4336-DE4A-57F2D2991396}"
 EndProject
+Project("{899D54F3-7FC1-0C13-CC33-7753E765F90D}") = "MazeGame", "Assembly-CSharp.csproj", "{A21DA567-4D02-FAFA-3719-CDAEF370184D}"
+EndProject
 Project("{899D54F3-7FC1-0C13-CC33-7753E765F90D}") = "MazeGame", "Assembly-CSharp-Editor.csproj", "{28E71F1A-F883-1250-6F81-BA7E09B149C9}"
 EndProject
 Global
@@ -15,6 +17,10 @@ Global
 		{4523C63B-A14D-4336-DE4A-57F2D2991396}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4523C63B-A14D-4336-DE4A-57F2D2991396}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4523C63B-A14D-4336-DE4A-57F2D2991396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A21DA567-4D02-FAFA-3719-CDAEF370184D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A21DA567-4D02-FAFA-3719-CDAEF370184D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A21DA567-4D02-FAFA-3719-CDAEF370184D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A21DA567-4D02-FAFA-3719-CDAEF370184D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28E71F1A-F883-1250-6F81-BA7E09B149C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28E71F1A-F883-1250-6F81-BA7E09B149C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28E71F1A-F883-1250-6F81-BA7E09B149C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
