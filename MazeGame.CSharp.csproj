@@ -69,10 +69,24 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\MazeGenerator.cs" />
-    <Compile Include="Assets\YouCantSeeMe.cs" />
+    <Compile Include="Assets\AttackScript.cs" />
+    <Compile Include="Assets\Scripts\MazeGenerator.cs" />
+    <Compile Include="Assets\Scripts\YouCantSeeMe.cs" />
+    <Compile Include="Assets\Scripts\draw_chalk.cs" />
+    <Compile Include="Assets\Scripts\rayCastChecker.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Scripts\animate_weapon_script.txt" />
+    <None Include="Assets\Scripts\attack_script.txt" />
+    <None Include="Assets\Scripts\coin_system_script.txt" />
+    <None Include="Assets\Scripts\fade_script.txt" />
+    <None Include="Assets\Scripts\loot_bag_script.txt" />
+    <None Include="Assets\Scripts\main_quest_part2_script.txt" />
+    <None Include="Assets\Scripts\menubutton_script.txt" />
+    <None Include="Assets\Scripts\message_script.txt" />
+    <None Include="Assets\Scripts\spin_coin_script.txt" />
+    <None Include="Assets\Scripts\textbox_script.txt" />
+    <None Include="Assets\Scripts\tutorial_006_script.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
@@ -82,17 +96,6 @@
     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
-    <None Include="Assets\animate_weapon_script.txt" />
-    <None Include="Assets\attack_script.txt" />
-    <None Include="Assets\coin_system_script.txt" />
-    <None Include="Assets\fade_script.txt" />
-    <None Include="Assets\loot_bag_script.txt" />
-    <None Include="Assets\main_quest_part2_script.txt" />
-    <None Include="Assets\menubutton_script.txt" />
-    <None Include="Assets\message_script.txt" />
-    <None Include="Assets\spin_coin_script.txt" />
-    <None Include="Assets\textbox_script.txt" />
-    <None Include="Assets\tutorial_006_script.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
