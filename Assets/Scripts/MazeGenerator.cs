@@ -29,14 +29,17 @@ public class MazeGenerator : MonoBehaviour
             }
             _currentTile = value;
         }
-   } 
+    }
     private static MazeGenerator instance;
     public static MazeGenerator Instance
     {
         get { return instance; }
     }
     void Awake() { instance = this; }
-    void Start() { MakeBlocks(); }
+    void Start()
+    {
+        MakeBlocks();
+    }
 
     // end of main program
 
@@ -65,8 +68,9 @@ public class MazeGenerator : MonoBehaviour
                 {
                     MazeString = MazeString + "X";  // added to create String
                     ptype = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    ptype.tag = "unmarked_block";
                     // To increase path distance increase i, j multipliers and localscale at same rate
-                    ptype.transform.position = new Vector3(i*2 * ptype.transform.localScale.x, 1, j*2 * ptype.transform.localScale.z);
+                    ptype.transform.position = new Vector3(i * 2 * ptype.transform.localScale.x, 1, j * 2 * ptype.transform.localScale.z);
                     ptype.transform.localScale = new Vector3(2, 2, 2);
                     if (brick != null) { ptype.GetComponent<Renderer>().material = brick; }
                     ptype.transform.parent = transform;
@@ -171,5 +175,24 @@ public class MazeGenerator : MonoBehaviour
     {
         //return p.x >= 0  p.y >= 0  p.x < width  p.y < height;
         return p.x >= 0 && p.y >= 0 && p.x < width && p.y < height;
+    }
+    void Update()
+    {
+        
+        if (Input.GetKeyDown("1"))
+        {
+            print("keyPressed");
+            destroy_unmarked_blocks();
+            MakeBlocks();
+        }
+
+    }
+    //destory all blocks that haven't been marked with chalk (i.e. items with tag "unmarked_block")
+    void destroy_unmarked_blocks()
+    {
+        foreach (GameObject fooObj in GameObject.FindGameObjectsWithTag("unmarked_block"))
+        {
+            Destroy(fooObj);
+        }
     }
 }
