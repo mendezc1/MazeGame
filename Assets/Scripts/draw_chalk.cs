@@ -54,20 +54,23 @@ public class draw_chalk : MonoBehaviour
                 return;
             RaycastHit casterObj = Caster();
             Vector3 newPoint = casterObj.point;
-            GameObject cube = casterObj.collider.gameObject;
-            cube.tag = "marked_block";
-            cube.GetComponent<block_properties>().set_generations(chalk.GetComponent<chalk_properties>().get_power());
-            float distToCube = Vector3.Distance(chalk.transform.position, cube.transform.position);
-            if (distToCube < 3.5f)
+            if (casterObj.collider.gameObject.name == "Cube")
             {
-                //Material cubeMat = cube.GetComponent<Material>();
+                GameObject cube = casterObj.collider.gameObject;
+                cube.tag = "marked_block";
+                cube.GetComponent<block_properties>().set_generations(chalk.GetComponent<chalk_properties>().get_power());
+                float distToCube = Vector3.Distance(chalk.transform.position, cube.transform.position);
+                if (distToCube < 3.5f)
+                {
+                    //Material cubeMat = cube.GetComponent<Material>();
 
-                lastPos = newPoint;
-                if (linePoints == null)
-                    linePoints = new List<Vector3>();
-                linePoints.Add(newPoint);
+                    lastPos = newPoint;
+                    if (linePoints == null)
+                        linePoints = new List<Vector3>();
+                    linePoints.Add(newPoint);
 
-                UpdateLine();
+                    UpdateLine();
+                }
             }
         }
        // else {

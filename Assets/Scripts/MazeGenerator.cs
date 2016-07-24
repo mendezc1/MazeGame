@@ -18,6 +18,11 @@ public class MazeGenerator : MonoBehaviour
     private Vector2 _currentTile;
     public String MazeString;
 
+    /*
+    //stupid stuff for time
+    float startTime;
+    bool reset; 
+    */
     public Vector2 CurrentTile
     {
         get { return _currentTile; }
@@ -38,6 +43,8 @@ public class MazeGenerator : MonoBehaviour
     void Awake() { instance = this; }
     void Start()
     {
+        //reset = false;
+        //startTime = Time.time;
         MakeBlocks();
     }
 
@@ -191,6 +198,17 @@ public class MazeGenerator : MonoBehaviour
     }
     void Update()
     {
+      /*
+      //regenerates maze after X seconds 
+      if(Time.time - startTime >= 10)
+        {
+            startTime = Time.time;
+            destroy_unmarked_blocks();
+
+            MakeBlocks();
+            clear_path();
+        }
+      */
         
         if (Input.GetKeyDown("1"))
         {

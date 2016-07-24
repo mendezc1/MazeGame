@@ -42,10 +42,10 @@ public class block_properties : MonoBehaviour {
             {
                 block.tag = "edge_block";
             }
-            else
-            {
+           else
+           {
                 block.tag = "unmarked_block";
-            }
+           }
             
 
         }
