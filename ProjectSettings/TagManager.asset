@@ -6,6 +6,7 @@ TagManager:
   tags:
   - unmarked_block
   - marked_block
+  - edge_block
   layers:
   - Default
   - TransparentFX

@@ -44,10 +44,18 @@ public class MazeGenerator : MonoBehaviour
     // end of main program
 
     // ============= subroutines ============
+    public int get_width()
+    {
+        return width;
+    }
 
+    public int get_height()
+    {
+        return height;
+    }
     void MakeBlocks()
     {
-
+        decrement_chalk_generations();
         Maze = new int[width, height];
         for (int x = 0; x < width; x++)
         {
@@ -66,9 +74,14 @@ public class MazeGenerator : MonoBehaviour
             {
                 if (Maze[i, j] == 1)
                 {
+                    
                     MazeString = MazeString + "X";  // added to create String
                     ptype = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    ptype.AddComponent<block_properties>();
                     ptype.tag = "unmarked_block";
+                    if(i==0 || i==width-1 || j == 0 || j == height - 1){
+                        ptype.tag = "edge_block";
+                    }
                     // To increase path distance increase i, j multipliers and localscale at same rate
                     ptype.transform.position = new Vector3(i * 2 * ptype.transform.localScale.x, 1, j * 2 * ptype.transform.localScale.z);
                     ptype.transform.localScale = new Vector3(2, 2, 2);
@@ -183,7 +196,9 @@ public class MazeGenerator : MonoBehaviour
         {
             print("keyPressed");
             destroy_unmarked_blocks();
+            
             MakeBlocks();
+            clear_path();
         }
 
     }
@@ -194,5 +209,41 @@ public class MazeGenerator : MonoBehaviour
         {
             Destroy(fooObj);
         }
+    }
+
+    void decrement_chalk_generations()
+    {
+        foreach (GameObject fooObj in GameObject.FindGameObjectsWithTag("marked_block"))
+        {
+            fooObj.GetComponent<block_properties>().decrement_generation();
+        }
+    }
+    //clears path around marked bricks
+    void clear_path()
+    {
+        foreach (GameObject fooObj in GameObject.FindGameObjectsWithTag("marked_block"))
+        {
+            RaycastHit hit;
+            //magicNumber is my guess at block size...
+            float magicNumber = 1f;
+            if(Physics.Raycast(fooObj.transform.position, Vector3.right, out hit, magicNumber) && hit.collider.gameObject.tag == "unmarked_block")
+            {
+                Destroy(hit.collider.gameObject);
+            }
+            if (Physics.Raycast(fooObj.transform.position, Vector3.left, out hit, magicNumber) && hit.collider.gameObject.tag == "unmarked_block")
+            {
+                Destroy(hit.collider.gameObject);
+            }
+            if (Physics.Raycast(fooObj.transform.position, Vector3.forward, out hit, magicNumber) && hit.collider.gameObject.tag == "unmarked_block")
+            {
+                Destroy(hit.collider.gameObject);
+            }
+            if (Physics.Raycast(fooObj.transform.position, Vector3.back, out hit, magicNumber) && hit.collider.gameObject.tag == "unmarked_block")
+            {
+                Destroy(hit.collider.gameObject);
+            }
+
+        }
+       
     }
 }
