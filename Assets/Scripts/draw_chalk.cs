@@ -59,6 +59,7 @@ public class draw_chalk : MonoBehaviour
                 return;
             RaycastHit casterObj = Caster();
             Vector3 newPoint = casterObj.point;
+            print(casterObj.collider.gameObject.name);
             if (casterObj.collider.gameObject.name == "Cube")
             {
                 GameObject cube = casterObj.collider.gameObject;
@@ -98,9 +99,9 @@ public class draw_chalk : MonoBehaviour
     {
         obj.AddComponent<chalkline_properties>();
         print("Calling set generations");
-        print(obj.GetComponent<chalkline_properties>().get_generations());
+        //print(obj.GetComponent<chalkline_properties>().get_generations());
         obj.GetComponent<chalkline_properties>().set_generations(chalk.GetComponent<chalk_properties>().get_power());
-        print(obj.GetComponent<chalkline_properties>().get_generations());
+        //print(obj.GetComponent<chalkline_properties>().get_generations());
     }
 
     void UpdateLine()
@@ -124,8 +125,8 @@ public class draw_chalk : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            print(hit.point);
-            print(hit.collider.name);
+            //print(hit.point);
+            //print(hit.collider.name);
         }
         return hit;
     }
