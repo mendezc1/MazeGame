@@ -11,6 +11,7 @@ public class draw_chalk : MonoBehaviour
     Camera thisCamera;
     int lineCount = 0;
     public GameObject chalk;
+    GameObject go;
 
     Vector3 lastPos = Vector3.one * float.MaxValue;
 
@@ -24,15 +25,19 @@ public class draw_chalk : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButtonUp(0))
+        {
 
+        }
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject go = new GameObject();
+            go = new GameObject();
             
-            go.transform.parent = chalk.transform;
+            go.transform.parent = chalk.transform.parent;
+            go.tag = "chalk_line";
             lineRenderer = go.AddComponent<LineRenderer>();
-            
-            
+            add_chalk_properties(go);
+
             Vector3 newPoint = Caster().point;
             lastPos = newPoint;
             lineRenderer.SetWidth(.01f, .01f);
@@ -57,7 +62,12 @@ public class draw_chalk : MonoBehaviour
             if (casterObj.collider.gameObject.name == "Cube")
             {
                 GameObject cube = casterObj.collider.gameObject;
-                cube.tag = "marked_block";
+                if (cube.tag != "marked_block")
+                {
+                    cube.tag = "marked_block";
+                    chalk.GetComponent<chalk_properties>().decrement_uses();
+
+                }
                 cube.GetComponent<block_properties>().set_generations(chalk.GetComponent<chalk_properties>().get_power());
                 float distToCube = Vector3.Distance(chalk.transform.position, cube.transform.position);
                 if (distToCube < 3.5f)
@@ -84,6 +94,14 @@ public class draw_chalk : MonoBehaviour
 
     }
 
+    void add_chalk_properties(GameObject obj)
+    {
+        obj.AddComponent<chalkline_properties>();
+        print("Calling set generations");
+        print(obj.GetComponent<chalkline_properties>().get_generations());
+        obj.GetComponent<chalkline_properties>().set_generations(chalk.GetComponent<chalk_properties>().get_power());
+        print(obj.GetComponent<chalkline_properties>().get_generations());
+    }
 
     void UpdateLine()
     {

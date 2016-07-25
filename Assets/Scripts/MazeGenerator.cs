@@ -46,6 +46,7 @@ public class MazeGenerator : MonoBehaviour
         //reset = false;
         //startTime = Time.time;
         MakeBlocks();
+        GenerateChalks();
     }
 
     // end of main program
@@ -83,7 +84,8 @@ public class MazeGenerator : MonoBehaviour
                 {
                     
                     MazeString = MazeString + "X";  // added to create String
-                    ptype = (GameObject)Instantiate(Resources.Load("wall_brick_40_staggered")); 
+                    ptype = (GameObject)Instantiate(Resources.Load("wall_brick_40_staggered"));
+                    ptype.name = "cube";
                     ptype.AddComponent<block_properties>();
                     ptype.tag = "unmarked_block";
                     if(i==0 || i==width-1 || j == 0 || j == height - 1){
@@ -91,8 +93,8 @@ public class MazeGenerator : MonoBehaviour
                     }
                     // To increase path distance increase i, j multipliers and localscale at same rate
                     ptype.transform.position = new Vector3(i * 2 * ptype.transform.localScale.x, 0, j * 2 * ptype.transform.localScale.z);
-                    ptype.transform.localScale = new Vector3(.05f, .05f, .05f);
-                   // if (brick != null) { ptype.GetComponent<Renderer>().material = brick; }
+					ptype.transform.localScale = new Vector3(.05f, .05f, .05f);
+                    //if (brick != null) { ptype.GetComponent<Renderer>().material = brick; }
                     ptype.transform.parent = transform;
                 }
                 else if (Maze[i, j] == 0)
@@ -231,6 +233,12 @@ public class MazeGenerator : MonoBehaviour
 
     void decrement_chalk_generations()
     {
+        foreach (GameObject chalkline in GameObject.FindGameObjectsWithTag("chalk_line"))
+        {
+            print(chalkline);
+            print ("gottem");
+            chalkline.GetComponent<chalkline_properties>().decrement_generation();
+        }
         foreach (GameObject fooObj in GameObject.FindGameObjectsWithTag("marked_block"))
         {
             fooObj.GetComponent<block_properties>().decrement_generation();
@@ -263,5 +271,14 @@ public class MazeGenerator : MonoBehaviour
 
         }
        
+    }
+
+    void GenerateChalks()
+    {
+        GameObject loadedObject =Resources.Load("chalk_1") as GameObject;
+        //Instantiate(loadedObject);
+        //loadedObject.transform.position =Vector3.one;
+        //loadedObject.AddComponent<chalk_properties>();
+
     }
 }
