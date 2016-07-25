@@ -461,5 +461,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 100
   height: 100
-  brick: {fileID: 2100000, guid: 7d851d130ba86c24a8d459ce5e1ba144, type: 2}
+  brick: {fileID: 0}
   MazeString: 

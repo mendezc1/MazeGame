@@ -83,16 +83,16 @@ public class MazeGenerator : MonoBehaviour
                 {
                     
                     MazeString = MazeString + "X";  // added to create String
-                    ptype = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    ptype = (GameObject)Instantiate(Resources.Load("wall_brick_40_staggered")); 
                     ptype.AddComponent<block_properties>();
                     ptype.tag = "unmarked_block";
                     if(i==0 || i==width-1 || j == 0 || j == height - 1){
                         ptype.tag = "edge_block";
                     }
                     // To increase path distance increase i, j multipliers and localscale at same rate
-                    ptype.transform.position = new Vector3(i * 2 * ptype.transform.localScale.x, 1, j * 2 * ptype.transform.localScale.z);
-                    ptype.transform.localScale = new Vector3(2, 2, 2);
-                    if (brick != null) { ptype.GetComponent<Renderer>().material = brick; }
+                    ptype.transform.position = new Vector3(i * 2 * ptype.transform.localScale.x, 0, j * 2 * ptype.transform.localScale.z);
+                    ptype.transform.localScale = new Vector3(.05f, .05f, .05f);
+                   // if (brick != null) { ptype.GetComponent<Renderer>().material = brick; }
                     ptype.transform.parent = transform;
                 }
                 else if (Maze[i, j] == 0)

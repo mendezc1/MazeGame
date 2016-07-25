@@ -48,6 +48,10 @@
      <Compile Include="Assets\AttackScript.cs" />
      <Compile Include="Assets\Scripts\MazeGenerator.cs" />
      <Compile Include="Assets\Scripts\YouCantSeeMe.cs" />
+     <Compile Include="Assets\Scripts\block_properties.cs" />
+     <Compile Include="Assets\Scripts\chalk_properties.cs" />
+     <Compile Include="Assets\Scripts\draw_chalk.cs" />
+     <Compile Include="Assets\Scripts\rayCastChecker.cs" />
      <None Include="Assets\Scripts\coin_system_script.txt" />
      <None Include="Assets\Scripts\main_quest_part2_script.txt" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
