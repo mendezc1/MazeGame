@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\YouCantSeeMe.cs" />
      <Compile Include="Assets\Scripts\block_properties.cs" />
      <Compile Include="Assets\Scripts\chalk_properties.cs" />
+     <Compile Include="Assets\Scripts\chalkline_properties.cs" />
      <Compile Include="Assets\Scripts\draw_chalk.cs" />
      <Compile Include="Assets\Scripts\rayCastChecker.cs" />
      <None Include="Assets\Scripts\coin_system_script.txt" />

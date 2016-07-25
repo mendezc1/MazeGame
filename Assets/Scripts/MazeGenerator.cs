@@ -95,8 +95,8 @@ public class MazeGenerator : MonoBehaviour
                         ptype.tag = "edge_block";
                     }
                     // To increase path distance increase i, j multipliers and localscale at same rate
-                    ptype.transform.position = new Vector3(i * 2 * ptype.transform.localScale.x, 0, j * 2 * ptype.transform.localScale.z);
-					ptype.transform.localScale = new Vector3(.05f, .05f, .05f);
+                    ptype.transform.position = new Vector3(i * 8 * ptype.transform.localScale.x, 0, j * 8 * ptype.transform.localScale.z);
+					ptype.transform.localScale = new Vector3(.2f, .15f, .2f);
                     //if (brick != null) { ptype.GetComponent<Renderer>().material = brick; }
                     ptype.transform.parent = transform;
                 }
