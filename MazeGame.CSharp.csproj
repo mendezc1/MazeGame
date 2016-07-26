@@ -70,11 +70,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AttackScript.cs" />
+    <Compile Include="Assets\Scripts\FPSDisplay.cs" />
     <Compile Include="Assets\Scripts\MazeGenerator.cs" />
     <Compile Include="Assets\Scripts\YouCantSeeMe.cs" />
     <Compile Include="Assets\Scripts\block_properties.cs" />
     <Compile Include="Assets\Scripts\chalk_properties.cs" />
     <Compile Include="Assets\Scripts\chalkline_properties.cs" />
+    <Compile Include="Assets\Scripts\create_ground.cs" />
     <Compile Include="Assets\Scripts\draw_chalk.cs" />
     <Compile Include="Assets\Scripts\rayCastChecker.cs" />
   </ItemGroup>
