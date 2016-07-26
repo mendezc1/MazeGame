@@ -86,6 +86,7 @@ public class MazeGenerator : MonoBehaviour
                     MazeString = MazeString + "X";  // added to create String
                     ptype = (GameObject)Instantiate(Resources.Load("wall_brick_40_staggered"));
                     ptype.name = "Cube";
+                    ptype.isStatic = true;
                     ptype.AddComponent<block_properties>();
                     ptype.AddComponent<BoxCollider>();
                     ptype.GetComponent<BoxCollider>().center = new Vector3(0,20,0);
