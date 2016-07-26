@@ -32,15 +32,17 @@ public class draw_chalk : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             go = new GameObject();
-            
+           
             go.transform.parent = chalk.transform.parent;
             go.tag = "chalk_line";
             lineRenderer = go.AddComponent<LineRenderer>();
+           // lineRenderer.GetComponent<Renderer>().material = Resources.Load("Floor1") as Material;
+            lineRenderer.material.SetTexture("_MainTex", Resources.Load("Painting1") as Texture2D); //Attempt to texture chalk
             add_chalk_properties(go);
 
             Vector3 newPoint = Caster().point;
             lastPos = newPoint;
-            lineRenderer.SetWidth(.01f, .01f);
+            lineRenderer.SetWidth(.1f, .1f);
             lineRenderer.SetPosition(0,newPoint);
             lineRenderer.SetPosition(1, newPoint);
             

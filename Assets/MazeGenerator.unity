@@ -263,7 +263,7 @@ MonoBehaviour:
   startWidth: 0.001
   endWidth: 0.001
   threshold: 0.001
-  chalk: {fileID: 0}
+  chalk: {fileID: 636554070}
 --- !u!111 &636554072
 Animation:
   m_ObjectHideFlags: 0
@@ -298,7 +298,7 @@ BoxCollider:
   m_GameObject: {fileID: 636554070}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.9999998, y: 8.43458, z: 51.33082}
   m_Center: {x: 0.999999, y: 6.110373, z: 16.78887}
@@ -437,7 +437,7 @@ GameObject:
   - 154: {fileID: 1571782614}
   - 114: {fileID: 1571782617}
   m_Layer: 0
-  m_Name: Terrain
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -462,7 +462,7 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 3
   m_TerrainData: {fileID: 15600000, guid: ecd49699f6f3cbb4e953eee520b6cd6f, type: 2}
-  m_TreeDistance: 5000
+  m_TreeDistance: 2000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
@@ -491,8 +491,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1571782613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalPosition: {x: -100, y: 0, z: -100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -510,5 +510,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 99
   height: 99
-  brick: {fileID: 0}
+  brick: {fileID: 2100000, guid: d4ac57728e76d0745abc1ff3c211184b, type: 2}
   MazeString: 

@@ -105,6 +105,21 @@ public class MazeGenerator : MonoBehaviour
                 {
                     MazeString = MazeString + "0"; // added to create String
                     pathMazes.Add(new Vector3(i, 0, j));
+                    ptype = (GameObject)Instantiate(Resources.Load("wall_brick_40_staggered"));
+                    ptype.name = "Floor";
+                    ptype.isStatic = true;
+                    ptype.AddComponent<block_properties>();
+                    ptype.AddComponent<BoxCollider>();
+                    ptype.GetComponent<BoxCollider>().center = new Vector3(0, 20, 0);
+                    ptype.GetComponent<BoxCollider>().size = new Vector3(40, 40, 40);
+                   // ptype.tag = "unmarked_floor";
+               
+                    // To increase path distance increase i, j multipliers and localscale at same rate
+                    ptype.transform.position = new Vector3(i *8* ptype.transform.localScale.x, 0, j *8* ptype.transform.localScale.z);
+                    ptype.transform.localScale = new Vector3(.2f, .025f, .2f);
+                 //   if (brick != null) { ptype.GetComponent<Renderer>().material = brick; }
+                    ptype.transform.parent = transform;
+
                 }
             }
             MazeString = MazeString + "\n";  // added to create String
