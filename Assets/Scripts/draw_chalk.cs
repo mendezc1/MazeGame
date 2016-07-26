@@ -70,7 +70,7 @@ public class draw_chalk : MonoBehaviour
 
                 }
                 cube.GetComponent<block_properties>().set_generations(chalk.GetComponent<chalk_properties>().get_power());
-                float distToCube = Vector3.Distance(chalk.transform.position, cube.transform.position);
+                float distToCube = Vector3.Distance(chalk.transform.position, casterObj.point);
                 if (distToCube < 3.5f)
                 {
                     //Material cubeMat = cube.GetComponent<Material>();
