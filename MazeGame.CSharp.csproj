@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Assets\AttackScript.cs" />
     <Compile Include="Assets\Scripts\FPSDisplay.cs" />
+    <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\MazeGenerator.cs" />
     <Compile Include="Assets\Scripts\Poison_trap.cs" />
     <Compile Include="Assets\Scripts\YouCantSeeMe.cs" />

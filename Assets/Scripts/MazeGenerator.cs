@@ -17,7 +17,7 @@ public class MazeGenerator : MonoBehaviour
     private int _width, _height;
     private Vector2 _currentTile;
     public String MazeString;
-
+    public GameObject player;
     /*
     //stupid stuff for time
     float startTime;
@@ -101,12 +101,22 @@ public class MazeGenerator : MonoBehaviour
                     //if (brick != null) { ptype.GetComponent<Renderer>().material = brick; }
                     ptype.transform.parent = transform;
                 }
+                //creating floors
                 else if (Maze[i, j] == 0)
                 {
                     MazeString = MazeString + "0"; // added to create String
                     pathMazes.Add(new Vector3(i, 0, j));
                     ptype = (GameObject)Instantiate(Resources.Load("wall_brick_40_staggered"));
                     ptype.name = "Floor";
+                    float trap_gen = UnityEngine.Random.value;
+                    if (trap_gen > .75f)
+                    {
+                        GameObject trap = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube));
+                        trap.transform.position = new Vector3(i * 8 * ptype.transform.localScale.x, 2, j * 8 * ptype.transform.localScale.z);
+                        trap.GetComponent<Renderer>().material = new Material(Shader.Find("Diffuse"));
+                        trap.GetComponent<Renderer>().material.color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
+                        trap.AddComponent<Poison_trap>();
+                    }
                     ptype.isStatic = true;
                     ptype.AddComponent<block_properties>();
                     ptype.AddComponent<BoxCollider>();
