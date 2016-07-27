@@ -25,7 +25,8 @@ public class player_properties : MonoBehaviour {
         //health -= .1f;
         if (health <= 0)
         {
-            Destroy(player); 
+            player.transform.position = new Vector3(0, 20, 0);
+            health = 100;
         }
 	}
     public bool isPoisoned()

@@ -65,7 +65,7 @@ public class draw_chalk : MonoBehaviour
             if (casterObj.collider.gameObject.name == "Cube")
             {
                 GameObject cube = casterObj.collider.gameObject;
-                if (cube.tag != "marked_block")
+                if (cube.tag != "marked_block" && cube.tag != "Home")
                 {
                     cube.tag = "marked_block";
                     chalk.GetComponent<chalk_properties>().decrement_uses();

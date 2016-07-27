@@ -8,6 +8,7 @@ TagManager:
   - marked_block
   - edge_block
   - chalk_line
+  - Home
   layers:
   - Default
   - TransparentFX
