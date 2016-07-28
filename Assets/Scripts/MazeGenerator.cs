@@ -82,8 +82,21 @@ public class MazeGenerator : MonoBehaviour
             {
                 if (Maze[i, j] == 1)
                 {
-                    
+
                     MazeString = MazeString + "X";  // added to create String
+                    if (i == 0 && j == 1)
+                    {
+                        create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-1,0,0),new Vector3(.2f, .15f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-2, 0, 0), new Vector3(.2f, .15f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-2, 0, 1), new Vector3(.2f, .15f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-2, 0, 2), new Vector3(.2f, .15f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-1, 0, 2), new Vector3(.2f, .15f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(0, 0, 1), new Vector3(.2f, .025f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-1, 0, 1), new Vector3(.2f, .025f, .2f));
+
+                        continue;
+
+                    }
                     ptype = (GameObject)Instantiate(Resources.Load("wall_brick_40_staggered"));
                     ptype.name = "Cube";
                     ptype.isStatic = true;
@@ -311,49 +324,21 @@ public class MazeGenerator : MonoBehaviour
         //loadedObject.AddComponent<chalk_properties>();
 
     }
-
-    bool isportalconnected(GameObject start, GameObject goal)
+    void create_wall_brick(string resource, string tag, Vector3 position, Vector3 scale)
     {
-        List<GameObject> connectedPath = new List<GameObject>();
-        List<GameObject> visitedCubes = new List<GameObject>();
-
-        connectedPath.Add(start);
-        while (connectedPath.Count > 0)
-        {
-            List<GameObject> neighbours = findAllMarkedNeighbors(connectedPath[0].gameObject);
-            foreach(GameObject neighbour in neighbours)
-            {
-                if (!visitedCubes.Contains(neighbour))
-                {
-                    if(neighbour == goal)
-                    {
-                        return true;
-                    }
-                    connectedPath.Add(neighbour);
-                }
-            }
-        }
-        visitedCubes.Add(connectedPath[0]);
-        connectedPath.RemoveAt(0);
-        //for each neighbor of start
-            //if neighbor is goal, return true
-            //if neighbor is not goal and is marked, return isportalconnected(neighbor, goal)
-            //if neighbor is not goal and is not marked, return false
-
-        return false;
+        GameObject ptype = (GameObject)Instantiate(Resources.Load(resource));
+        ptype.name = "ayylmao";
+        ptype.isStatic = true;
+        ptype.AddComponent<block_properties>();
+        ptype.AddComponent<BoxCollider>();
+        ptype.GetComponent<BoxCollider>().center = new Vector3(0, 20, 0);
+        ptype.GetComponent<BoxCollider>().size = new Vector3(40, 40, 40);
+        ptype.tag = tag;
+        // To increase path distance increase i, j multipliers and localscale at same rate
+        ptype.transform.position = new Vector3 (position.x *8 * ptype.transform.localScale.x, 0, position.z *8 * ptype.transform.localScale.x) ;
+        ptype.transform.localScale = scale;
+        //if (brick != null) { ptype.GetComponent<Renderer>().material = brick; }
+        ptype.transform.parent = transform;
     }
 
-    List<GameObject> findAllMarkedNeighbors(GameObject go)
-    {
-        List<GameObject> markedNeighbours = new List<GameObject>();
-        Collider[] colliders = Physics.OverlapSphere(go.transform.position, go.GetComponent<Collider>().bounds.size.x);
-        foreach(Collider coll in colliders)
-        {
-            if(coll.gameObject.tag == "marked_cube")
-            {
-                markedNeighbours.Add(coll.gameObject);
-            }
-        }
-        return markedNeighbours;
-    }
 }
