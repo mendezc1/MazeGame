@@ -8,7 +8,7 @@ public class Poison_trap : MonoBehaviour {
     public int drainsLeft;
     public float startTime;
     GameObject trap;
-    GameObject player;
+    GameObject _player;
     // Use this for initialization
     void Start () {
         trap = this.gameObject;
@@ -24,9 +24,10 @@ public class Poison_trap : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        /*
         RaycastHit casterObj = Caster();
         float distToPlayer = Vector3.Distance(trap.transform.position, casterObj.point);
-
+        
         if (distToPlayer < 5f)
         {
             if (casterObj.collider.name == "RigidBodyFPSController")
@@ -47,7 +48,7 @@ public class Poison_trap : MonoBehaviour {
                 }
                 
             }
-        }
+        }*/
     }    
 
     void poison()
@@ -56,11 +57,22 @@ public class Poison_trap : MonoBehaviour {
         print(Time.time);
         if (startTime + duration < Time.time)
         {
-            player.GetComponent<player_properties>().poisoned = false;
+            _player.GetComponent<player_properties>().poisoned = false;
             CancelInvoke();
         }
-        player.GetComponent<player_properties>().health -= drain_factor;
+        _player.GetComponent<player_properties>().health -= drain_factor;
 
+    }
+    public void trigger_poison(GameObject player)
+    {
+        startTime = Time.time;
+        _player = player;
+        if (!player.GetComponent<player_properties>().isPoisoned())
+        {
+            InvokeRepeating("poison", 0, 1f);
+            player.GetComponent<player_properties>().poisoned = true;
+
+        }
     }
     RaycastHit Caster()
     {

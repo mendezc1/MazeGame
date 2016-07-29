@@ -25,7 +25,8 @@ public class player_properties : MonoBehaviour {
         //health -= .1f;
         if (health <= 0)
         {
-            player.transform.position = new Vector3(0, 20, 0);
+
+            player.transform.position = new Vector3(1, 20, 0);
             health = 100;
         }
 	}
