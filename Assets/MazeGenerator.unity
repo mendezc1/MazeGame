@@ -490,7 +490,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 71cfa1b7067ab684b887de4623277da9, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 71cfa1b7067ab684b887de4623277da9, type: 3}
       propertyPath: m_LocalScale.x
@@ -695,8 +695,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a086772b2ad2b0e4e812520edfd7b21b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 99
-  height: 99
+  width: 25
+  height: 25
   brick: {fileID: 2100000, guid: d4ac57728e76d0745abc1ff3c211184b, type: 2}
   MazeString: 
   player: {fileID: 0}

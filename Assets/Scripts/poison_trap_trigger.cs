@@ -19,6 +19,9 @@ public class poison_trap_trigger : MonoBehaviour {
         if(other.tag == "Player")
         {
             GameObject par = this.gameObject.transform.parent.gameObject;
+            GameObject poisoncloud = (GameObject)Instantiate(Resources.Load("poison_cloud"));
+            poisoncloud.transform.parent = par.transform;
+            poisoncloud.transform.position = par.transform.position;
             par.GetComponent<Poison_trap>().trigger_poison(other.gameObject);
             //Light light = this.gameObject.transform.parent.gameObject.GetComponent<Light>();
             //light;
