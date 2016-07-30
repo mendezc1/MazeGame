@@ -131,8 +131,14 @@ public class MazeGenerator : MonoBehaviour
                         trapRadius.GetComponent<BoxCollider>().isTrigger = true;
                         trapRadius.GetComponent<BoxCollider>().transform.localScale = new Vector3(trap.GetComponent<Collider>().transform.localScale.x * 6, trap.GetComponent<Collider>().transform.localScale.y * 4, trap.GetComponent<Collider>().transform.localScale.z * 6);
                         trapRadius.AddComponent<poison_trap_trigger>();
-                       //trap.GetComponent<Rigidbody>().isKinematic = true;
+                        //trap.GetComponent<Rigidbody>().isKinematic = true;
+                        
+                        
                         trap.transform.position = new Vector3(i * 8 * ptype.transform.localScale.x, 2,  j * 8 * ptype.transform.localScale.z);
+                        GameObject spear =Instantiate(Resources.Load("spear_1_prefab") as GameObject);
+                        spear.transform.parent = trap.transform;
+                        spear.transform.GetChild(0).transform.position = new Vector3(spear.transform.position.x, 5, spear.transform.position.z);                        
+                       //spear.transform.position = trap.transform.position;
                         trap.GetComponent<Renderer>().material = new Material(Shader.Find("Diffuse"));
                         trap.GetComponent<Renderer>().material.color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
                         trap.AddComponent<Poison_trap>();
