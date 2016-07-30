@@ -86,6 +86,8 @@
     <Compile Include="Assets\Scripts\poison_trap_trigger.cs" />
     <Compile Include="Assets\Scripts\power_pad.cs" />
     <Compile Include="Assets\Scripts\rayCastChecker.cs" />
+    <Compile Include="Assets\Scripts\spear_basic_behavior.cs" />
+    <Compile Include="Assets\Scripts\spear_weapon_script.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\animate_weapon_script.txt" />
