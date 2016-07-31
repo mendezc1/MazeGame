@@ -12,6 +12,7 @@ public class draw_chalk : MonoBehaviour
     int lineCount = 0;
     public GameObject chalk;
     GameObject go;
+    public GameObject lineParent;
 
     Vector3 lastPos = Vector3.one * float.MaxValue;
 
@@ -20,6 +21,7 @@ public class draw_chalk : MonoBehaviour
     {
         thisCamera = Camera.main;
         chalk = this.gameObject;
+        lineParent = new GameObject();
 
     }
 
@@ -33,9 +35,9 @@ public class draw_chalk : MonoBehaviour
         {
             go = new GameObject();
            
-            go.transform.parent = chalk.transform.parent;
+            go.transform.parent = lineParent.transform.parent;
             go.tag = "chalk_line";
-            DontDestroyOnLoad(go);
+            DontDestroyOnLoad(go.transform.root.gameObject);
             lineRenderer = go.AddComponent<LineRenderer>();
            // lineRenderer.GetComponent<Renderer>().material = Resources.Load("Floor1") as Material;
             lineRenderer.material.SetTexture("_MainTex", Resources.Load("Painting1") as Texture2D); //Attempt to texture chalk
@@ -69,7 +71,7 @@ public class draw_chalk : MonoBehaviour
                 if (cube.tag != "marked_block" && cube.tag != "Home")
                 {
                     cube.tag = "marked_block";
-                    DontDestroyOnLoad(cube);
+                    DontDestroyOnLoad(cube.transform.root.gameObject);
                     chalk.GetComponent<chalk_properties>().decrement_uses();
 
                 }

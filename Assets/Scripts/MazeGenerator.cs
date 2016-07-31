@@ -48,6 +48,7 @@ public class MazeGenerator : MonoBehaviour
         //reset = false;
         //startTime = Time.time;
         MakeBlocks();
+        clear_path();
         GenerateChalks();
     }
 
@@ -66,6 +67,7 @@ public class MazeGenerator : MonoBehaviour
     void MakeBlocks()
     {
         decrement_chalk_generations();
+        
         Maze = new int[width, height];
         for (int x = 0; x < width; x++)
         {
@@ -309,7 +311,7 @@ public class MazeGenerator : MonoBehaviour
         {
             RaycastHit hit;
             //magicNumber is my guess at block size...
-            float magicNumber = 1f;
+            float magicNumber = 5f;
             if(Physics.Raycast(fooObj.transform.position, Vector3.right, out hit, magicNumber) && hit.collider.gameObject.tag == "unmarked_block")
             {
                 Destroy(hit.collider.gameObject);
