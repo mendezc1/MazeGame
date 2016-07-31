@@ -35,6 +35,7 @@ public class draw_chalk : MonoBehaviour
            
             go.transform.parent = chalk.transform.parent;
             go.tag = "chalk_line";
+            DontDestroyOnLoad(go);
             lineRenderer = go.AddComponent<LineRenderer>();
            // lineRenderer.GetComponent<Renderer>().material = Resources.Load("Floor1") as Material;
             lineRenderer.material.SetTexture("_MainTex", Resources.Load("Painting1") as Texture2D); //Attempt to texture chalk
@@ -68,6 +69,7 @@ public class draw_chalk : MonoBehaviour
                 if (cube.tag != "marked_block" && cube.tag != "Home")
                 {
                     cube.tag = "marked_block";
+                    DontDestroyOnLoad(cube);
                     chalk.GetComponent<chalk_properties>().decrement_uses();
 
                 }

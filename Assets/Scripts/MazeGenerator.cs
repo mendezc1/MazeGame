@@ -2,9 +2,11 @@
 // to ensure we can get walls around all tunnels...  so use 21 x 13 , or 7 x 7 for examples.
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 public class MazeGenerator : MonoBehaviour
 {
     public int width, height;
@@ -271,9 +273,9 @@ public class MazeGenerator : MonoBehaviour
         if (Input.GetKeyDown("1"))
         {
             print("keyPressed");
-            destroy_unmarked_blocks();
-            
-            MakeBlocks();
+            //destroy_unmarked_blocks();
+            //MakeBlocks();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
             clear_path();
         }
 
