@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-//TODO: delete chalk lines after parent generations have expired.
 public class draw_chalk : MonoBehaviour
 {
     List<Vector3> linePoints = new List<Vector3>();
@@ -13,7 +12,7 @@ public class draw_chalk : MonoBehaviour
     public GameObject chalk;
     GameObject go;
     public GameObject lineParent;
-
+    public GameObject marked_block_container;
     Vector3 lastPos = Vector3.one * float.MaxValue;
 
 
@@ -22,6 +21,11 @@ public class draw_chalk : MonoBehaviour
         thisCamera = Camera.main;
         chalk = this.gameObject;
         lineParent = new GameObject();
+        if (!GameObject.Find("Marked_block_container")){
+            marked_block_container = new GameObject();
+            marked_block_container.name = "Marked_block_container";
+            DontDestroyOnLoad(marked_block_container);
+        }
 
     }
 
@@ -71,7 +75,9 @@ public class draw_chalk : MonoBehaviour
                 if (cube.tag != "marked_block" && cube.tag != "Home")
                 {
                     cube.tag = "marked_block";
-                    DontDestroyOnLoad(cube.transform.root.gameObject);
+                    cube.transform.parent = marked_block_container.transform;
+                    print(cube.transform.parent.name);
+                    DontDestroyOnLoad(cube.transform.parent.gameObject);
                     chalk.GetComponent<chalk_properties>().decrement_uses();
 
                 }

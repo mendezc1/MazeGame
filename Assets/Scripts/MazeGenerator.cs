@@ -20,6 +20,7 @@ public class MazeGenerator : MonoBehaviour
     private Vector2 _currentTile;
     public String MazeString;
     public GameObject player;
+    
     /*
     //stupid stuff for time
     float startTime;
@@ -42,7 +43,10 @@ public class MazeGenerator : MonoBehaviour
     {
         get { return instance; }
     }
-    void Awake() { instance = this; }
+    void Awake() {
+        instance = this;
+        
+    }
     void Start()
     {
         //reset = false;
