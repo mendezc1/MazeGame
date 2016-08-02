@@ -278,7 +278,7 @@ public class MazeGenerator : MonoBehaviour
         
         if (Input.GetKeyDown("1"))
         {
-            print("keyPressed");
+            //print("keyPressed");
             //destroy_unmarked_blocks();
             //MakeBlocks();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
@@ -299,8 +299,8 @@ public class MazeGenerator : MonoBehaviour
     {
         foreach (GameObject chalkline in GameObject.FindGameObjectsWithTag("chalk_line"))
         {
-            print(chalkline);
-            print ("gottem");
+            //print(chalkline);
+            //print ("gottem");
             chalkline.GetComponent<chalkline_properties>().decrement_generation();
         }
         foreach (GameObject fooObj in GameObject.FindGameObjectsWithTag("marked_block"))

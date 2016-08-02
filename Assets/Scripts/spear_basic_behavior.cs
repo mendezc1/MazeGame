@@ -6,13 +6,15 @@ public class spear_basic_behavior : MonoBehaviour {
     GameObject spear;
     float startTime;
     Animation attackClip;
-    float clipLength;
+    public float clipLength;
+    public bool attacking { get; set; }
     // Use this for initialization
     void Start() {
         spear = this.gameObject;
         anim = spear.GetComponent<Animator>();
         startTime = Time.time;
         clipLength = 0;
+        attacking = false;
 
     }
 
@@ -20,7 +22,11 @@ public class spear_basic_behavior : MonoBehaviour {
     void Update() {
         ///anim.SetBool("attack", false);
 
-
+        if (clipLength + startTime >= Time.time)
+        {
+            attacking = true;
+        }
+        else attacking = false;
         if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && clipLength + startTime <= Time.time) 
         {
             //print(anim.GetBool("attack"));

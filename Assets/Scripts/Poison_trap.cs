@@ -53,8 +53,8 @@ public class Poison_trap : MonoBehaviour {
 
     void poison()
     {
-        print(startTime + duration);
-        print(Time.time);
+        //print(startTime + duration);
+        //print(Time.time);
         if (startTime + duration < Time.time)
         {
             _player.GetComponent<player_properties>().poisoned = false;

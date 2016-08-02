@@ -70,7 +70,7 @@ public class PortalChecker : MonoBehaviour {
         Collider[] colliders = Physics.OverlapSphere(go.transform.position, go.GetComponent<Collider>().bounds.size.x);
         foreach (Collider coll in colliders)
         {
-            print("collider tag = "+ coll.gameObject.tag);
+            //print("collider tag = "+ coll.gameObject.tag);
             if (coll.gameObject.tag == "marked_block" || coll.gameObject.tag == "Home"){
                 markedNeighbours.Add(coll.gameObject);
             }

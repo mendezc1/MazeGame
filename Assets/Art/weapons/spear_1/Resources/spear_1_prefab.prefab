@@ -10,8 +10,9 @@ GameObject:
   - 4: {fileID: 448842}
   - 33: {fileID: 3374040}
   - 23: {fileID: 2312902}
+  - 65: {fileID: 6529594}
   m_Layer: 0
-  m_Name: default
+  m_Name: spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,6 +95,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138742}
   m_Mesh: {fileID: 4300000, guid: 0b646568d296bf945996c2a86a706fd7, type: 3}
+--- !u!65 &6529594
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138742}
+  m_Material: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1, type: 2}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9, y: 5, z: 60}
+  m_Center: {x: 0, y: 2.5, z: -0.0000009536743}
 --- !u!95 &9569438
 Animator:
   serializedVersion: 3

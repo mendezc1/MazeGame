@@ -11,8 +11,8 @@
          ray = Camera.main.ScreenPointToRay(Input.mousePosition);
          if(Physics.Raycast(ray, out hit))
          {
-             print(hit.point);
-             print (hit.collider.name);
+             //print(hit.point);
+             //print (hit.collider.name);
          }
      }
  }

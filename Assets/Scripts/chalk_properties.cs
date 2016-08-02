@@ -34,7 +34,7 @@ public class chalk_properties : MonoBehaviour {
     
     public int get_power()
     {
-        print("getting power");
+        //print("getting power");
         return power;
     }
 

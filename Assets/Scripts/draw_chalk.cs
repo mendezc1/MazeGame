@@ -68,7 +68,7 @@ public class draw_chalk : MonoBehaviour
                 return;
             RaycastHit casterObj = Caster();
             Vector3 newPoint = casterObj.point;
-            print(casterObj.collider.gameObject.name);
+            //print(casterObj.collider.gameObject.name);
             if (casterObj.collider.gameObject.name == "Cube")
             {
                 GameObject cube = casterObj.collider.gameObject;
@@ -76,7 +76,7 @@ public class draw_chalk : MonoBehaviour
                 {
                     cube.tag = "marked_block";
                     cube.transform.parent = marked_block_container.transform;
-                    print(cube.transform.parent.name);
+                    //print(cube.transform.parent.name);
                     DontDestroyOnLoad(cube.transform.parent.gameObject);
                     chalk.GetComponent<chalk_properties>().decrement_uses();
 
@@ -110,7 +110,7 @@ public class draw_chalk : MonoBehaviour
     void add_chalk_properties(GameObject obj)
     {
         obj.AddComponent<chalkline_properties>();
-        print("Calling set generations");
+        //print("Calling set generations");
         //print(obj.GetComponent<chalkline_properties>().get_generations());
         obj.GetComponent<chalkline_properties>().set_generations(chalk.GetComponent<chalk_properties>().get_power());
         //print(obj.GetComponent<chalkline_properties>().get_generations());

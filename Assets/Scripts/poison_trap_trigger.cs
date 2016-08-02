@@ -25,7 +25,7 @@ public class poison_trap_trigger : MonoBehaviour {
             par.GetComponent<Poison_trap>().trigger_poison(other.gameObject);
             //Light light = this.gameObject.transform.parent.gameObject.GetComponent<Light>();
             //light;
-            print("Git Gud");
+            //print("Git Gud");
         }
     }
 }
