@@ -84,6 +84,7 @@ public class MazeGenerator : MonoBehaviour
         _tiletoTry.Push(CurrentTile);
         Maze = CreateMaze();  // generate the maze in Maze Array.
         GameObject ptype = null;
+        int trapNum = 0;
         for (int i = 0; i <= Maze.GetUpperBound(0); i++)
         {
             for (int j = 0; j <= Maze.GetUpperBound(1); j++)
@@ -130,26 +131,12 @@ public class MazeGenerator : MonoBehaviour
                     ptype = (GameObject)Instantiate(Resources.Load("wall_brick_40_staggered"));
                     ptype.name = "Floor";
                     float trap_gen = UnityEngine.Random.value;
-                    if (trap_gen > .75f)
+                   
+                    if (trap_gen > .75f && trapNum < 1)
                     {
-                        GameObject trap = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube));
-                        GameObject trapRadius = Instantiate(new GameObject());
-                        trapRadius.transform.parent = trap.transform;
-                        trapRadius.AddComponent<BoxCollider>();
-                        trapRadius.GetComponent<BoxCollider>().isTrigger = true;
-                        trapRadius.GetComponent<BoxCollider>().transform.localScale = new Vector3(trap.GetComponent<Collider>().transform.localScale.x * 6, trap.GetComponent<Collider>().transform.localScale.y * 4, trap.GetComponent<Collider>().transform.localScale.z * 6);
-                        trapRadius.AddComponent<poison_trap_trigger>();
-                        //trap.GetComponent<Rigidbody>().isKinematic = true;
+                        trapNum++;
+                        createTrapRoom(i, j, ptype);
                         
-                        
-                        trap.transform.position = new Vector3(i * 8 * ptype.transform.localScale.x, 2,  j * 8 * ptype.transform.localScale.z);
-                        GameObject spear =Instantiate(Resources.Load("spear_1_prefab") as GameObject);
-                        spear.transform.parent = trap.transform;
-                        spear.transform.GetChild(0).transform.position = new Vector3(spear.transform.position.x, 5, spear.transform.position.z);                        
-                       //spear.transform.position = trap.transform.position;
-                        trap.GetComponent<Renderer>().material = new Material(Shader.Find("Diffuse"));
-                        trap.GetComponent<Renderer>().material.color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
-                        trap.AddComponent<Poison_trap>();
                     }
                     ptype.isStatic = true;
                     ptype.AddComponent<block_properties>();
@@ -362,4 +349,29 @@ public class MazeGenerator : MonoBehaviour
         ptype.transform.parent = transform;
     }
 
+    void createTrapRoom(int i, int j, GameObject ptype) {
+
+        
+        GameObject trapRoom = Instantiate(Resources.Load("PoisonTrapRoom") as GameObject);
+        trapRoom.transform.parent = transform;
+        trapRoom.transform.position = new Vector3(50* trapRoom.transform.localScale.x, 1, 50 * trapRoom.transform.localScale.z);
+
+        /*GameObject trapRadius = Instantiate(new GameObject());
+        trapRadius.transform.parent = trap.transform;
+        trapRadius.AddComponent<BoxCollider>();
+        trapRadius.GetComponent<BoxCollider>().isTrigger = true;
+        trapRadius.GetComponent<BoxCollider>().transform.localScale = new Vector3(trap.GetComponent<Collider>().transform.localScale.x * 6, trap.GetComponent<Collider>().transform.localScale.y * 4, trap.GetComponent<Collider>().transform.localScale.z * 6);
+        trapRadius.AddComponent<poison_trap_trigger>();
+        //trap.GetComponent<Rigidbody>().isKinematic = true;
+
+
+        trap.transform.position = new Vector3(i * 8 * ptype.transform.localScale.x, 2, j * 8 * ptype.transform.localScale.z);
+        GameObject spear = Instantiate(Resources.Load("spear_1_prefab") as GameObject);
+        spear.transform.parent = trap.transform;
+        spear.transform.GetChild(0).transform.position = new Vector3(spear.transform.position.x, 5, spear.transform.position.z);
+        //spear.transform.position = trap.transform.position;
+        trap.GetComponent<Renderer>().material = new Material(Shader.Find("Diffuse"));
+        trap.GetComponent<Renderer>().material.color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
+        trap.AddComponent<Poison_trap>();*/
+    }
 }

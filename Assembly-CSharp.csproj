@@ -46,15 +46,27 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AttackScript.cs" />
+     <Compile Include="Assets\MoltenMetalStudios\LightFlickerPulse\LightFlickerPulse.cs" />
+     <Compile Include="Assets\Scripts\Actor.cs" />
      <Compile Include="Assets\Scripts\FPSDisplay.cs" />
+     <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\MazeGenerator.cs" />
+     <Compile Include="Assets\Scripts\Poison_trap.cs" />
+     <Compile Include="Assets\Scripts\PortalChecker.cs" />
      <Compile Include="Assets\Scripts\YouCantSeeMe.cs" />
      <Compile Include="Assets\Scripts\block_properties.cs" />
      <Compile Include="Assets\Scripts\chalk_properties.cs" />
      <Compile Include="Assets\Scripts\chalkline_properties.cs" />
      <Compile Include="Assets\Scripts\create_ground.cs" />
+     <Compile Include="Assets\Scripts\cube_monster.cs" />
+     <Compile Include="Assets\Scripts\cube_monster_hitbox.cs" />
      <Compile Include="Assets\Scripts\draw_chalk.cs" />
+     <Compile Include="Assets\Scripts\player_properties.cs" />
+     <Compile Include="Assets\Scripts\poison_trap_trigger.cs" />
+     <Compile Include="Assets\Scripts\power_pad.cs" />
      <Compile Include="Assets\Scripts\rayCastChecker.cs" />
+     <Compile Include="Assets\Scripts\spear_basic_behavior.cs" />
+     <Compile Include="Assets\Scripts\spear_weapon_script.cs" />
      <None Include="Assets\Scripts\coin_system_script.txt" />
      <None Include="Assets\Scripts\main_quest_part2_script.txt" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
