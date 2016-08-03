@@ -8,6 +8,7 @@ public class cube_monster : Actor {
         health = 100;
         mana = 100;
         actor = this.gameObject;
+        /*
         //base.hitbox = actor.GetComponent<Collider>();
         hitbox = Instantiate(new GameObject());
         hitbox.transform.parent = actor.transform;
@@ -15,7 +16,11 @@ public class cube_monster : Actor {
         hitbox.GetComponent<BoxCollider>().isTrigger = true;
         hitbox.transform.position = actor.transform.position;
         //hitbox.GetComponent<BoxCollider>().transform.localScale = new Vector3(actor.GetComponent<Collider>().transform.localScale.x * 6, actor.GetComponent<Collider>().transform.localScale.y * 4, actor.GetComponent<Collider>().transform.localScale.z * 6);
+        
         hitbox.AddComponent<cube_monster_hitbox>();
+        */
+        print(this.name);
+        this.tag = "Enemy";
     }
 
     // Update is called once per frame

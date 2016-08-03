@@ -9,6 +9,7 @@ TagManager:
   - edge_block
   - chalk_line
   - Home
+  - Enemy
   layers:
   - Default
   - TransparentFX
