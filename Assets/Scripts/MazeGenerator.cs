@@ -132,7 +132,7 @@ public class MazeGenerator : MonoBehaviour
                     ptype.name = "Floor";
                     float trap_gen = UnityEngine.Random.value;
                    
-                    if (trap_gen > .75f && trapNum < 1)
+                    if (trap_gen > .95f && trapNum < 10)
                     {
                         trapNum++;
                         createTrapRoom(i, j, ptype);
@@ -354,7 +354,7 @@ public class MazeGenerator : MonoBehaviour
         
         GameObject trapRoom = Instantiate(Resources.Load("PoisonTrapRoom") as GameObject);
         trapRoom.transform.parent = transform;
-        trapRoom.transform.position = new Vector3(50* trapRoom.transform.localScale.x, 1, 50 * trapRoom.transform.localScale.z);
+        trapRoom.transform.position = new Vector3(j*10* trapRoom.transform.localScale.x, 1, i*10 * trapRoom.transform.localScale.z);
 
         /*GameObject trapRadius = Instantiate(new GameObject());
         trapRadius.transform.parent = trap.transform;
