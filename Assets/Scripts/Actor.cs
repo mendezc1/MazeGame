@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Actor : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Actor : MonoBehaviour
     GameObject[] equipment;
     GameObject[] inventory;
     public GameObject hitbox;
+    public Text HealthCounter;
     // Use this for initialization
     void Start()
     {
@@ -22,7 +24,7 @@ public class Actor : MonoBehaviour
     {
         //checkForHits();
     }
-    
+
     public void kill()
     {
         //print(this.health);
@@ -36,5 +38,12 @@ public class Actor : MonoBehaviour
         return true;
     }
 
-    
+    public virtual void Attack()
+    {
+
+    }
+    public void setHealthText()
+    {
+        HealthCounter.text = "Enemy Health: " + health.ToString();
+    }
 }

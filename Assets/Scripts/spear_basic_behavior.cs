@@ -45,7 +45,7 @@ public class spear_basic_behavior : MonoBehaviour {
             RaycastHit casterObj = Caster();
             float distToRay = Vector3.Distance(player.transform.position, casterObj.point);
             //print(casterObj.collider.gameObject.tag);
-            if (distToRay < 5f && casterObj.collider.gameObject.tag == "Enemy")
+            if (distToRay < 3f && casterObj.collider.gameObject.tag == "Enemy")
             {
                 casterObj.collider.gameObject.GetComponent<Actor>().health -= damage;
                 print(casterObj.collider.gameObject.GetComponent<Actor>().health);
@@ -61,8 +61,12 @@ public class spear_basic_behavior : MonoBehaviour {
         Ray ray;
         RaycastHit hit;
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        print("casting");
+        
         if (Physics.Raycast(ray, out hit))
         {
+           Debug.DrawLine(transform.position, hit.point, Color.cyan, 3);
+            
             //print(hit.point);
             //print(hit.collider.name);
         }
