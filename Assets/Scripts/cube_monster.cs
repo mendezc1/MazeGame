@@ -25,7 +25,7 @@ public class cube_monster : Actor {
 
 
 
-        if (gameObject.transform.parent.GetComponent<enemy_pursuit>().distToPlayer < 1 && !animation_started)
+        if (gameObject.transform.parent.GetComponent<enemy_pursuit>().distToPlayer < 3 && !animation_started)
         {
 
             // initialize the flags

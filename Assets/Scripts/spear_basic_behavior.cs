@@ -9,7 +9,7 @@ public class spear_basic_behavior : MonoBehaviour {
     public float clipLength;
     public bool attacking { get; set; }
     public GameObject player;
-    public int damage = 10;
+    public int damage;
     // Use this for initialization
     void Start() {
         spear = this.gameObject;
@@ -17,6 +17,7 @@ public class spear_basic_behavior : MonoBehaviour {
         startTime = Time.time;
         clipLength = 0;
         attacking = false;
+        damage = 50;
         player = spear.transform.parent.gameObject;
 
     }

@@ -10,6 +10,7 @@ TagManager:
   - chalk_line
   - Home
   - Enemy
+  - Minimap
   layers:
   - Default
   - TransparentFX
