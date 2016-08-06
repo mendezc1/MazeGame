@@ -518,7 +518,7 @@ GameObject:
   - 114: {fileID: 970347777}
   m_Layer: 5
   m_Name: Minimap
-  m_TagString: Untagged
+  m_TagString: Minimap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

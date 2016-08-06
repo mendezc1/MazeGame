@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class MazeGenerator : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class MazeGenerator : MonoBehaviour
     }
     void Start()
     {
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
         //reset = false;
         //startTime = Time.time;
         MakeBlocks();
@@ -114,7 +116,12 @@ public class MazeGenerator : MonoBehaviour
                     ptype.GetComponent<BoxCollider>().center = new Vector3(0,20,0);
                     ptype.GetComponent<BoxCollider>().size = new Vector3(40, 40, 40);
                     ptype.tag = "unmarked_block";
-                    if(i==0 || i==width-1 || j == 0 || j == height - 1){
+                    ptype.AddComponent<wall_blip_maker>();
+                    
+                    //makeBlip(ptype);
+
+                    
+                    if (i==0 || i==width-1 || j == 0 || j == height - 1){
                         ptype.tag = "edge_block";
                     }
                     // To increase path distance increase i, j multipliers and localscale at same rate
@@ -374,4 +381,18 @@ public class MazeGenerator : MonoBehaviour
         trap.GetComponent<Renderer>().material.color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
         trap.AddComponent<Poison_trap>();*/
     }
+    /*
+    void makeBlip(GameObject ptype)
+    {
+        GameObject minimap = GameObject.FindGameObjectsWithTag("Minimap")[0];
+        GameObject blip = new GameObject();
+        blip.AddComponent<Image>();
+        blip.GetComponent<Image>().color = new Color(0, 0, 0);
+        blip.AddComponent<blip>();
+        //blip.GetComponent<blip>().Target = player.transform;
+        blip.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(8, 8);
+        blip.transform.parent = minimap.transform;
+        blip.GetComponent<blip>().Target = ptype.transform;
+    }
+    */
 }

@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\enemy_pursuit.cs" />
     <Compile Include="Assets\Scripts\minimap\blip.cs" />
     <Compile Include="Assets\Scripts\minimap\minimap.cs" />
+    <Compile Include="Assets\Scripts\minimap\wall_blip_maker.cs" />
     <Compile Include="Assets\Scripts\player_properties.cs" />
     <Compile Include="Assets\Scripts\poison_trap_trigger.cs" />
     <Compile Include="Assets\Scripts\power_pad.cs" />
