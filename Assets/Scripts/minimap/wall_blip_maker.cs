@@ -5,11 +5,14 @@ using UnityEngine.UI;
 public class wall_blip_maker : MonoBehaviour {
     GameObject ptype;
     GameObject blip;
+    GameObject player;
+    GameObject minimap;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         ptype = gameObject;
-        GameObject minimap = GameObject.FindGameObjectsWithTag("Minimap")[0];
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
+        minimap = GameObject.FindGameObjectsWithTag("Minimap")[0];
         blip = new GameObject();
         blip.AddComponent<Image>();
         blip.GetComponent<Image>().color = new Color(0, 0, 0);
@@ -23,11 +26,22 @@ public class wall_blip_maker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (ptype.GetComponentInChildren<MeshRenderer>().isVisible)
+        float distToPlayer = Vector3.Distance(player.transform.position, ptype.transform.position);
+        float radius = ptype.GetComponentInChildren<Renderer>().bounds.extents.magnitude;
+        if (distToPlayer <= radius*2)
         {
             blip.GetComponent<Image>().enabled = true;
         }
-        else blip.GetComponent<Image>().enabled = false;
+        //else blip.GetComponent<Image>().enabled = false;
 
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Vector3 center = ptype.GetComponentInChildren<Renderer>().bounds.center;
+        float radius = ptype.GetComponentInChildren<Renderer>().bounds.extents.magnitude;
+
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(center, radius);
     }
 }
