@@ -904,7 +904,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 941a129b666686243a4368f2ff28124b, type: 2}
   m_Color: {r: 0.19140531, g: 0.13046065, b: 0.9338235, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1108,9 +1108,9 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 2
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1959535312}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -1499,6 +1499,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1923004943}
+--- !u!20 &1959535312 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 2000000, guid: c6453f8e1f814744d8b94e5a6d1f9942,
+    type: 2}
+  m_PrefabInternal: {fileID: 87765309}
 --- !u!4 &1996792751 stripped
 Transform:
   m_PrefabParentObject: {fileID: 417702, guid: 7b4a27c1218691149b384f28925a67c6, type: 2}

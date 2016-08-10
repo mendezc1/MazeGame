@@ -14,14 +14,17 @@ public class wall_blip_maker : MonoBehaviour {
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         minimap = GameObject.FindGameObjectsWithTag("Minimap")[0];
         blip = new GameObject();
-        blip.AddComponent<Image>();
-        blip.GetComponent<Image>().color = new Color(0, 0, 0);
+        blip.AddComponent<RawImage>();
+        blip.GetComponent<RawImage>().texture = Resources.Load("blip") as Texture2D;
+        //blip.GetComponent<Image>().color = new Color(0, 0, 0);
         blip.AddComponent<blip>();
         //blip.GetComponent<blip>().Target = player.transform;
-        blip.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(8, 8);
+        blip.GetComponent<RawImage>().rectTransform.sizeDelta = new Vector2(8, 8);
         blip.transform.parent = minimap.transform;
         blip.GetComponent<blip>().Target = ptype.transform;
-        blip.GetComponent<Image>().enabled = false;
+        //minimap.GetComponent<Renderer>().receiveShadows = false;
+        blip.GetComponent<RawImage>().enabled = false;
+        blip.transform.localScale = new Vector3(1, 1, 1);
     }
 	
 	// Update is called once per frame
@@ -30,7 +33,7 @@ public class wall_blip_maker : MonoBehaviour {
         float radius = ptype.GetComponentInChildren<Renderer>().bounds.extents.magnitude;
         if (distToPlayer <= radius*2)
         {
-            blip.GetComponent<Image>().enabled = true;
+            blip.GetComponent<RawImage>().enabled = true;
         }
         //else blip.GetComponent<Image>().enabled = false;
 
