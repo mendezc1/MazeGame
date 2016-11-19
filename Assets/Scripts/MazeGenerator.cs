@@ -54,8 +54,6 @@ public class MazeGenerator : MonoBehaviour
         //reset = false;
         //startTime = Time.time;
         MakeBlocks();
-        clear_path();
-        GenerateChalks();
     }
 
     // end of main program
@@ -72,7 +70,6 @@ public class MazeGenerator : MonoBehaviour
     }
     void MakeBlocks()
     {
-        decrement_chalk_generations();
         
         Maze = new int[width, height];
         for (int x = 0; x < width; x++)
@@ -116,7 +113,7 @@ public class MazeGenerator : MonoBehaviour
                     ptype.GetComponent<BoxCollider>().center = new Vector3(0,20,0);
                     ptype.GetComponent<BoxCollider>().size = new Vector3(40, 40, 40);
                     ptype.tag = "unmarked_block";
-                    ptype.AddComponent<wall_blip_maker>();
+                  //  ptype.AddComponent<wall_blip_maker>();
                     
                     //makeBlip(ptype);
 
@@ -137,14 +134,8 @@ public class MazeGenerator : MonoBehaviour
                     pathMazes.Add(new Vector3(i, 0, j));
                     ptype = (GameObject)Instantiate(Resources.Load("wall_brick_40_staggered"));
                     ptype.name = "Floor";
-                    float trap_gen = UnityEngine.Random.value;
-                   
-                    if (trap_gen > .95f && trapNum < 10 && i > 5 && j > 5)
-                    {
-                        trapNum++;
-                        createTrapRoom(i, j, ptype);
-                        
-                    }
+                
+           
                     ptype.isStatic = true;
                     ptype.AddComponent<block_properties>();
                     ptype.AddComponent<BoxCollider>();
@@ -276,69 +267,12 @@ public class MazeGenerator : MonoBehaviour
             //destroy_unmarked_blocks();
             //MakeBlocks();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
-            clear_path();
         }
 
     }
     //destory all blocks that haven't been marked with chalk (i.e. items with tag "unmarked_block")
-    void destroy_unmarked_blocks()
-    {
-        foreach (GameObject fooObj in GameObject.FindGameObjectsWithTag("unmarked_block"))
-        {
-            Destroy(fooObj);
-        }
-    }
+   
 
-    void decrement_chalk_generations()
-    {
-        foreach (GameObject chalkline in GameObject.FindGameObjectsWithTag("chalk_line"))
-        {
-            //print(chalkline);
-            //print ("gottem");
-            chalkline.GetComponent<chalkline_properties>().decrement_generation();
-        }
-        foreach (GameObject fooObj in GameObject.FindGameObjectsWithTag("marked_block"))
-        {
-            fooObj.GetComponent<block_properties>().decrement_generation();
-        }
-    }
-    //clears path around marked bricks
-    void clear_path()
-    {
-        foreach (GameObject fooObj in GameObject.FindGameObjectsWithTag("marked_block"))
-        {
-            RaycastHit hit;
-            //magicNumber is my guess at block size...
-            float magicNumber = 5f;
-            if(Physics.Raycast(fooObj.transform.position, Vector3.right, out hit, magicNumber) && hit.collider.gameObject.tag == "unmarked_block")
-            {
-                Destroy(hit.collider.gameObject);
-            }
-            if (Physics.Raycast(fooObj.transform.position, Vector3.left, out hit, magicNumber) && hit.collider.gameObject.tag == "unmarked_block")
-            {
-                Destroy(hit.collider.gameObject);
-            }
-            if (Physics.Raycast(fooObj.transform.position, Vector3.forward, out hit, magicNumber) && hit.collider.gameObject.tag == "unmarked_block")
-            {
-                Destroy(hit.collider.gameObject);
-            }
-            if (Physics.Raycast(fooObj.transform.position, Vector3.back, out hit, magicNumber) && hit.collider.gameObject.tag == "unmarked_block")
-            {
-                Destroy(hit.collider.gameObject);
-            }
-
-        }
-       
-    }
-
-    void GenerateChalks()
-    {
-        GameObject loadedObject =Resources.Load("chalk_1") as GameObject;
-        //Instantiate(loadedObject);
-        //loadedObject.transform.position =Vector3.one;
-        //loadedObject.AddComponent<chalk_properties>();
-
-    }
     void create_wall_brick(string resource, string tag, Vector3 position, Vector3 scale)
     {
         GameObject ptype = (GameObject)Instantiate(Resources.Load(resource));
@@ -355,44 +289,5 @@ public class MazeGenerator : MonoBehaviour
         //if (brick != null) { ptype.GetComponent<Renderer>().material = brick; }
         ptype.transform.parent = transform;
     }
-
-    void createTrapRoom(int i, int j, GameObject ptype) {
-
-        
-        GameObject trapRoom = Instantiate(Resources.Load("PoisonTrapRoom") as GameObject);
-        trapRoom.transform.parent = transform;
-        trapRoom.transform.position = new Vector3(j*8* trapRoom.transform.localScale.x, 1, i*8 * trapRoom.transform.localScale.z);
-
-        /*GameObject trapRadius = Instantiate(new GameObject());
-        trapRadius.transform.parent = trap.transform;
-        trapRadius.AddComponent<BoxCollider>();
-        trapRadius.GetComponent<BoxCollider>().isTrigger = true;
-        trapRadius.GetComponent<BoxCollider>().transform.localScale = new Vector3(trap.GetComponent<Collider>().transform.localScale.x * 6, trap.GetComponent<Collider>().transform.localScale.y * 4, trap.GetComponent<Collider>().transform.localScale.z * 6);
-        trapRadius.AddComponent<poison_trap_trigger>();
-        //trap.GetComponent<Rigidbody>().isKinematic = true;
-
-
-        trap.transform.position = new Vector3(i * 8 * ptype.transform.localScale.x, 2, j * 8 * ptype.transform.localScale.z);
-        GameObject spear = Instantiate(Resources.Load("spear_1_prefab") as GameObject);
-        spear.transform.parent = trap.transform;
-        spear.transform.GetChild(0).transform.position = new Vector3(spear.transform.position.x, 5, spear.transform.position.z);
-        //spear.transform.position = trap.transform.position;
-        trap.GetComponent<Renderer>().material = new Material(Shader.Find("Diffuse"));
-        trap.GetComponent<Renderer>().material.color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
-        trap.AddComponent<Poison_trap>();*/
-    }
-    /*
-    void makeBlip(GameObject ptype)
-    {
-        GameObject minimap = GameObject.FindGameObjectsWithTag("Minimap")[0];
-        GameObject blip = new GameObject();
-        blip.AddComponent<Image>();
-        blip.GetComponent<Image>().color = new Color(0, 0, 0);
-        blip.AddComponent<blip>();
-        //blip.GetComponent<blip>().Target = player.transform;
-        blip.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(8, 8);
-        blip.transform.parent = minimap.transform;
-        blip.GetComponent<blip>().Target = ptype.transform;
-    }
-    */
+    
 }
