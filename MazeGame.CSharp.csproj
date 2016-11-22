@@ -56,12 +56,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -90,9 +84,6 @@
     <Compile Include="Assets\Scripts\cube_monster_hitbox.cs" />
     <Compile Include="Assets\Scripts\draw_chalk.cs" />
     <Compile Include="Assets\Scripts\enemy_pursuit.cs" />
-    <Compile Include="Assets\Scripts\minimap\blip.cs" />
-    <Compile Include="Assets\Scripts\minimap\minimap.cs" />
-    <Compile Include="Assets\Scripts\minimap\wall_blip_maker.cs" />
     <Compile Include="Assets\Scripts\player_properties.cs" />
     <Compile Include="Assets\Scripts\poison_trap_trigger.cs" />
     <Compile Include="Assets\Scripts\power_pad.cs" />

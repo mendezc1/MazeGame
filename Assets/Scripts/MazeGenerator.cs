@@ -83,7 +83,7 @@ public class MazeGenerator : MonoBehaviour
         _tiletoTry.Push(CurrentTile);
         Maze = CreateMaze();  // generate the maze in Maze Array.
         GameObject ptype = null;
-        int trapNum = 0;
+        
         for (int i = 0; i <= Maze.GetUpperBound(0); i++)
         {
             for (int j = 0; j <= Maze.GetUpperBound(1); j++)
@@ -94,16 +94,26 @@ public class MazeGenerator : MonoBehaviour
                     MazeString = MazeString + "X";  // added to create String
                     if (i == 0 && j == 1)
                     {
-                        create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-1,0,0),new Vector3(.2f, .15f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-1, 0, 0), new Vector3(.2f, .15f, .2f));
                         create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-2, 0, 0), new Vector3(.2f, .15f, .2f));
                         create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-2, 0, 1), new Vector3(.2f, .15f, .2f));
                         create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-2, 0, 2), new Vector3(.2f, .15f, .2f));
                         create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-1, 0, 2), new Vector3(.2f, .15f, .2f));
-                        create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(0, 0, 1), new Vector3(.2f, .025f, .2f));
-                        create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-1, 0, 1), new Vector3(.2f, .025f, .2f));
+                        //   create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(0, 0, 1), new Vector3(.2f, .025f, .2f));
+                        //    create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-1, 0, 1), new Vector3(.2f, .025f, .2f));
 
                         continue;
 
+                    }
+                    else if (i == width-1 && j == height-1) {
+                        
+                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width, 0, height-2), new Vector3(.2f, .15f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width, 0, height-3), new Vector3(.2f, .15f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+1, 0, height-3), new Vector3(.2f, .15f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+2, 0, height-3), new Vector3(.2f, .15f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+2, 0, height-2), new Vector3(.2f, .15f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+1, 0, height-1), new Vector3(.2f, .025f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+1, 0, height-2), new Vector3(.2f, .025f, .2f));
                     }
                     ptype = (GameObject)Instantiate(Resources.Load("wall_brick_40_staggered"));
                     ptype.name = "Cube";
@@ -113,10 +123,6 @@ public class MazeGenerator : MonoBehaviour
                     ptype.GetComponent<BoxCollider>().center = new Vector3(0,20,0);
                     ptype.GetComponent<BoxCollider>().size = new Vector3(40, 40, 40);
                     ptype.tag = "unmarked_block";
-                  //  ptype.AddComponent<wall_blip_maker>();
-                    
-                    //makeBlip(ptype);
-
                     
                     if (i==0 || i==width-1 || j == 0 || j == height - 1){
                         ptype.tag = "edge_block";
@@ -132,6 +138,7 @@ public class MazeGenerator : MonoBehaviour
                 {
                     MazeString = MazeString + "0"; // added to create String
                     pathMazes.Add(new Vector3(i, 0, j));
+/*
                     ptype = (GameObject)Instantiate(Resources.Load("wall_brick_40_staggered"));
                     ptype.name = "Floor";
                 
@@ -141,14 +148,17 @@ public class MazeGenerator : MonoBehaviour
                     ptype.AddComponent<BoxCollider>();
                     ptype.GetComponent<BoxCollider>().center = new Vector3(0, 20, 0);
                     ptype.GetComponent<BoxCollider>().size = new Vector3(40, 40, 40);
-                   // ptype.tag = "unmarked_floor";
-               
-                    // To increase path distance increase i, j multipliers and localscale at same rate
-                    ptype.transform.position = new Vector3(i *8* ptype.transform.localScale.x, 0, j *8* ptype.transform.localScale.z);
-                    ptype.transform.localScale = new Vector3(.2f, .025f, .2f);
-                 //   if (brick != null) { ptype.GetComponent<Renderer>().material = brick; }
-                    ptype.transform.parent = transform;
+                    // ptype.tag = "unmarked_floor";
 
+                    // To increase path distance increase i, j multipliers and localscale at same rate
+   
+
+                    ptype.transform.position = new Vector3(i *8* ptype.transform.localScale.x, 0, j *8* ptype.transform.localScale.y);
+                    //   if (brick != null) { ptype.GetComponent<Renderer>().material = brick; }
+                    ptype.transform.localScale = new Vector3(.2f, .2f, .02f);
+                    ptype.transform.rotation = Quaternion.Euler(-90, -90, 0);
+                    ptype.transform.parent = transform;
+*/
                 }
             }
             MazeString = MazeString + "\n";  // added to create String
@@ -276,7 +286,7 @@ public class MazeGenerator : MonoBehaviour
     void create_wall_brick(string resource, string tag, Vector3 position, Vector3 scale)
     {
         GameObject ptype = (GameObject)Instantiate(Resources.Load(resource));
-        ptype.name = "ayylmao";
+        ptype.name = "StartOrEnd";
         ptype.isStatic = true;
         ptype.AddComponent<block_properties>();
         ptype.AddComponent<BoxCollider>();

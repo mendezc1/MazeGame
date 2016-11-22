@@ -11,6 +11,7 @@ TagManager:
   - Home
   - Enemy
   - Minimap
+  - End
   layers:
   - Default
   - TransparentFX
