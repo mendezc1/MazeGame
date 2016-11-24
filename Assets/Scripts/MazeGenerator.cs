@@ -96,7 +96,7 @@ public class MazeGenerator : MonoBehaviour
                     {
                         create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-1, 0, 0), new Vector3(.2f, .15f, .2f));
                         create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-2, 0, 0), new Vector3(.2f, .15f, .2f));
-                        create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-2, 0, 1), new Vector3(.2f, .15f, .2f));
+                      //  create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-2, 0, 1), new Vector3(.2f, .15f, .2f));
                         create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-2, 0, 2), new Vector3(.2f, .15f, .2f));
                         create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(-1, 0, 2), new Vector3(.2f, .15f, .2f));
                         //   create_wall_brick("wall_brick_40_staggered", "Home", new Vector3(0, 0, 1), new Vector3(.2f, .025f, .2f));
@@ -105,15 +105,17 @@ public class MazeGenerator : MonoBehaviour
                         continue;
 
                     }
-                    else if (i == width-1 && j == height-1) {
+                    else if (i == width-1 && j == height-2) {
                         
-                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width, 0, height-2), new Vector3(.2f, .15f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width, 0, height-1), new Vector3(.2f, .15f, .2f));
                         create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width, 0, height-3), new Vector3(.2f, .15f, .2f));
+                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+1, 0, height-1), new Vector3(.2f, .15f, .2f));
+                        //create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+1, 0, height-2), new Vector3(.2f, .15f, .2f));
                         create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+1, 0, height-3), new Vector3(.2f, .15f, .2f));
-                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+2, 0, height-3), new Vector3(.2f, .15f, .2f));
-                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+2, 0, height-2), new Vector3(.2f, .15f, .2f));
-                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+1, 0, height-1), new Vector3(.2f, .025f, .2f));
-                        create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+1, 0, height-2), new Vector3(.2f, .025f, .2f));
+                       // create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+3, 0, height-1), new Vector3(.2f, .025f, .2f));
+                       // create_wall_brick("wall_brick_40_staggered", "End", new Vector3(width+3, 0, height-2), new Vector3(.2f, .025f, .2f));
+
+                        continue;
                     }
                     ptype = (GameObject)Instantiate(Resources.Load("wall_brick_40_staggered"));
                     ptype.name = "Cube";
